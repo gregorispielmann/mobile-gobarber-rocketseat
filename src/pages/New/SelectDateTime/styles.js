@@ -5,34 +5,27 @@ export const Container = styled.SafeAreaView`
   flex: 1;
 `;
 
-export const ProvidersList = styled.FlatList.attrs({
+export const HourList = styled.FlatList.attrs({
   numColumns: 2,
-  showsVerticalScrollIndicator: false,
+  showVerticalScrollIndicator: false,
 })`
-  margin-top: 60px;
   padding: 0 20px;
 `;
 
-export const Provider = styled(RectButton)`
+export const Hour = styled(RectButton)`
   background: #fff;
   border-radius: 4px;
   padding: 20px;
   flex: 1;
 
+  opacity: ${props => (props.enabled ? 1 : 0.6)};
+
   align-items: center;
   margin: 0 10px 20px;
 `;
 
-export const Avatar = styled.Image`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-`;
-
-export const Name = styled.Text`
-  margin-top: 15px;
+export const Title = styled.Text`
   font-size: 16px;
   font-weight: bold;
   color: #333;
-  text-align: center;
 `;

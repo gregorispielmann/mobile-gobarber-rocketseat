@@ -9,14 +9,14 @@ import {Container, ProvidersList, Provider, Avatar, Name} from './styles';
 
 import api from '~/services/api';
 
-export default function SelectProvider() {
-  const [providers, setProviders] = useState();
+export default function SelectProvider({navigation}) {
+  const [providers, setProviders] = useState([]);
 
   useEffect(() => {
     async function loadProviders() {
       const res = await api.get('providers');
 
-      setProviders(res.data);
+      setProviders(res.data.provider);
     }
 
     loadProviders();
@@ -29,7 +29,10 @@ export default function SelectProvider() {
           data={providers}
           keyExtractor={provider => String(provider.id)}
           renderItem={({item: provider}) => (
-            <Provider>
+            <Provider
+              onPress={() => {
+                navigation.navigate('SelectDateTime', {provider});
+              }}>
               <Avatar
                 source={{
                   uri: provider.avatar
